@@ -14,6 +14,25 @@ h1 {
     color: red;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    font-size: 70px;
+}
+table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+th {
+    color: darkblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 50px;
+    padding: 6%;
+}
+td {
+    color: crimson;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: x-large;
+    padding:1% 60px 1% 60px;
 }
 p {
     color: grey;
