@@ -42,5 +42,8 @@
             "UserName": "Ittas",
             "Email": "fogdmarbeapofadat@elvagomatorkodat.hu"
         }
+    ],
+    "comments": [
+        {"id":1, "body": "some comment", "userId":1}
     ]
 }
