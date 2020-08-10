@@ -1,0 +1,46 @@
+{
+    "Users": [
+        {
+            "id": 1,
+            "Name": "Horváth Ferenc",
+            "Address": "9058 Kisbér, Nagy Lajos utca 78.",
+            "UserName": "Potrohos",
+            "Email": "bulimalac@freemail.hu"
+        },
+        {
+            "id": 2,
+            "Name": "Tuza Gizella",
+            "Address": "9058 Kisbér, Nagy Lajos utca 78.",
+            "UserName": "SokkosGizi",
+            "Email": "jancsibacsilover@freemail.hu"
+        },
+        {
+            "id": 3,
+            "Name": "Pómizs István",
+            "Address": "9058 Kisbér, Tuliba utca 12.",
+            "UserName": "BusDriver",
+            "Email": "sunka@citromail.hu"
+        },
+        {
+            "id": 4,
+            "Name": "Bűzös László",
+            "Address": "3985, Szarvas Dohány utca 1.",
+            "UserName": "Büdi",
+            "Email": "bl@gmail.com"
+        },
+        {
+            "id": 5,
+            "Name": "Szerény Erzsébet",
+            "Address": "1086, Budapest Hős utca 65 3/13",
+            "UserName": "Böbike",
+            "Email": "szexycica69@barsonyhang.com"
+        },
+        {
+            "id": 6,
+            "Name": "Kedves Nándor",
+            "Address": "1111, Budapest Kruspér utca 6-8 3/57",
+            "UserName": "Ittas",
+            "Email": "fogdmarbeapofadat@elvagomatorkodat.hu"
+        }
+    ]
+}
