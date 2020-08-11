@@ -56,7 +56,7 @@ function createUsersTable(users) {
 
  };
  fetch("http://localhost:3000/users", fetchInit).then(
-     data => data.jsom(), 
+     data => data.json(), 
      err => console.error(err)
  ).then(
      users => console.log(users)
