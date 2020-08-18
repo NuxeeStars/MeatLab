@@ -1,3 +1,6 @@
+// keys of users.
+let keys = ["id", "Name", "Address", "UserName", "Email"];
+
 //Get data from the server.
 function getServerData(url) {
     let fetchOptions = {
@@ -26,15 +29,25 @@ function fillDataTable(data,tableID) {
         return;
     }
     //Add new user row to the table
-    let newRow = newUserRow();
-    table.appendChild(newRow);
 
     let tBody = table.querySelector("tbody");
+    tBody.innerHTML= '';
+    let newRow = newUserRow();
+    tBody.appendChild(newRow);
+
     for (let row of data) {
         let tr = createAnyElement("tr");
-        for (let k in row) {
+        for (let k of keys) {
             let td = createAnyElement("td");
-            td.innerHTML = row[k];
+            let input = createAnyElement("input", {
+                class: "form-control",
+                value: row[k],
+                name: k,
+            });
+            if (k == "id") {
+               input.setAttribute("readonly", true);
+            }
+            td.appendChild(input);
             tr.appendChild(td);
         }
         let btnGroup = createBtnGroup();
@@ -55,7 +68,7 @@ function createAnyElement(name, attributes) {
 function createBtnGroup(){
     
     let group = createAnyElement("div", {class: "btn btn-group"});
-    let infoBtn = createAnyElement("button", {class: "btn btn-info", onclick: "getInfo(this)"});
+    let infoBtn = createAnyElement("button", {class: "btn btn-info", onclick: "setRow(this)"});
     infoBtn.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
     let delBtn = createAnyElement("button", {class: "btn btn-danger", onclick: "delRow(this)"});
     delBtn.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
@@ -90,7 +103,7 @@ function delRow(btn) {
 //create new user.
 function newUserRow(row) {
     let tr = createAnyElement("tr");
-    for (let k in {id: '', Name: '', Address: '', UserName: '', Email: '' }) {
+    for (let k of keys) {
         let td = createAnyElement("td");
         let input = createAnyElement("input", {
             class: "form-control",
@@ -117,9 +130,22 @@ function newUserRow(row) {
 function createUser(btn) {
     let tr = btn.parentElement.parentElement;
     let data = getRowData(tr);
-    
-    console.log(data);
-
+    delete data.id;
+    let fetchOptions = {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+    fetch('http://localhost:3000/users', fetchOptions).then(
+        resp => resp.json(),
+        err => console.error(err)
+    ).then(
+        data => startGetUsers()
+    );
 }
 
 function getRowData(tr) {
@@ -129,4 +155,25 @@ function getRowData(tr) {
         data[inputs[i].name] = inputs[i].value;
     }
     return data;
+}
+//ser data.
+function setRow(btn) {
+    let tr = btn.parentElement.parentElement.parentElement;
+    let data = getRowData(tr);
+    let fetchOptions = {
+        method: "PUT",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    };
+
+    fetch(`http://localhost:3000/users/${data.id}`, fetchOptions).then(
+        resp => resp.json(),
+        err => console.error(err)
+    ).then(
+        data => startGetUsers()
+    );
 }
